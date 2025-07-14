@@ -1,3 +1,4 @@
+<!-- Minimal URDF for velocity-only motor_joint -->
 <robot name="simple_motor">
   <ros2_control name="SimpleMotorSystem" type="system">
     <hardware>
@@ -5,7 +6,6 @@
     </hardware>
     <joint name="motor_joint">
       <command_interface name="velocity"/>
-      <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
   </ros2_control>
