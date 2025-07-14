@@ -24,6 +24,29 @@ ament_target_dependencies(
 install(TARGETS simple_motor_node
   DESTINATION lib/${PROJECT_NAME})
 
+add_library(simple_motor_control SHARED
+  src/simple_motor_hardware.cpp
+)
+target_include_directories(simple_motor_control PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+find_package(hardware_interface REQUIRED)
+ament_target_dependencies(simple_motor_control
+  hardware_interface
+  rclcpp
+  pluginlib
+)
+pluginlib_export_plugin_description_file(hardware_interface simple_motor_control.xml)
+install(TARGETS simple_motor_control
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+install(DIRECTORY include/ DESTINATION include)
+install(FILES simple_motor_control.xml DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY bringup/launch DESTINATION share/${PROJECT_NAME})
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights

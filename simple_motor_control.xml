@@ -1,0 +1,9 @@
+<library path="simple_motor_control">
+  <class name="simple_motor_control/SimpleMotorHardware"
+         type="simple_motor_control::SimpleMotorHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Minimal hardware interface for a single motor.
+    </description>
+  </class>
+</library>
