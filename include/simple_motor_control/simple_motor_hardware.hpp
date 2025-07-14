@@ -15,40 +15,23 @@ class SimpleMotorHardware : public hardware_interface::SystemInterface
 public:
   RCLCPP_SHARED_PTR_DEFINITIONS(SimpleMotorHardware)
 
-  hardware_interface::CallbackReturn on_init(const hardware_interface::HardwareInfo & info) override
-  {
-    return hardware_interface::CallbackReturn::SUCCESS;
-  }
+  hardware_interface::CallbackReturn on_init(const hardware_interface::HardwareInfo & info) override;
 
-  std::vector<hardware_interface::StateInterface> export_state_interfaces() override
-  {
-    return {};
-  }
+  std::vector<hardware_interface::StateInterface> export_state_interfaces() override;
 
-  std::vector<hardware_interface::CommandInterface> export_command_interfaces() override
-  {
-    return {};
-  }
+  std::vector<hardware_interface::CommandInterface> export_command_interfaces() override;
 
-  hardware_interface::CallbackReturn on_activate(const rclcpp_lifecycle::State &) override
-  {
-    return hardware_interface::CallbackReturn::SUCCESS;
-  }
+  hardware_interface::CallbackReturn on_activate(const rclcpp_lifecycle::State &) override;
 
-  hardware_interface::CallbackReturn on_deactivate(const rclcpp_lifecycle::State &) override
-  {
-    return hardware_interface::CallbackReturn::SUCCESS;
-  }
+  hardware_interface::CallbackReturn on_deactivate(const rclcpp_lifecycle::State &) override;
 
-  hardware_interface::return_type read(const rclcpp::Time &, const rclcpp::Duration &) override
-  {
-    return hardware_interface::return_type::OK;
-  }
+  hardware_interface::return_type read(const rclcpp::Time &, const rclcpp::Duration &) override;
 
-  hardware_interface::return_type write(const rclcpp::Time &, const rclcpp::Duration &) override
-  {
-    return hardware_interface::return_type::OK;
-  }
+  hardware_interface::return_type write(const rclcpp::Time &, const rclcpp::Duration &) override;
+
+private:
+  double motor_velocity_command_ = 0.0;
+  double motor_velocity_state_ = 0.0;
 };
 
 }  // namespace simple_motor_control
