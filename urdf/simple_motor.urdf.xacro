@@ -1,0 +1,12 @@
+<robot name="simple_motor">
+  <ros2_control name="SimpleMotorSystem" type="system">
+    <hardware>
+      <plugin>simple_motor_control/SimpleMotorHardware</plugin>
+    </hardware>
+    <joint name="motor_joint">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+</robot>
